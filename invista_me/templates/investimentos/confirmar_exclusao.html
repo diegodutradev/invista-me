@@ -1,11 +1,14 @@
 {% extends 'investimentos/base.html' %}
 {% block conteudo %}
-<div class="container">
+<div class="card shadow p-4 text-center animate__animated animate__zoomIn">
+    <h3 class="mb-4 text-danger">Confirmar exclusão de <strong>"{{ item.investimento }}"</strong>?</h3>
+    
     <form method="POST">
         {% csrf_token %}
-        <h1 style="text-align: center;">Confirmar exclusão do {{item.investimento}}</h1>
-        <button class="btn btn-default"><a href="{% url 'investimentos' %}">Cancelar</a></button>
-        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="{% url 'investimentos' %}" class="btn btn-outline-secondary px-4">Cancelar</a>
+            <button type="submit" class="btn btn-danger px-4">Confirmar</button>
+        </div>
     </form>
 </div>
 {% endblock %}

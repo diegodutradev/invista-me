@@ -1,23 +1,55 @@
 {% extends 'investimentos/base.html' %}
 {% block conteudo %}
 {% load widget_tweaks %}
-    <div class="container">
-        <form action="" method="POST">
-            {% csrf_token %}
-            <h1>Formulário Novo Investimento</h1>
-            <div class="form-row align-items-center">
-                <label >Investimento</label>
-                {% render_field formulario.investimento class='form-control' %}
-                <label >Valor</label>
-                {% render_field formulario.valor class='form-control pull-left' %}
-                <label >Pago</label>
-                {% render_field formulario.pago class='form-control form-check-input' %}
-                <label >Data</label>
-                {% render_field formulario.data class='form-control' %}
-            </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-            
-            <button type="submit" class="btn btn-success" style="margin-top: 10px;">Salvar</button>
-        </form>
+
+<!-- Container mais estreito -->
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+        <div class="card shadow p-4 animate__animated animate__fadeInDown">
+            <h3 class="mb-4">Novo Investimento</h3>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- Investimento -->
+                <div class="mb-3">
+                    <label class="form-label">💼 Investimento</label>
+                    {% render_field formulario.investimento class='form-control' %}
+                </div>
+
+                <!-- Valor -->
+                <div class="mb-3">
+                    <label class="form-label">💰 Valor</label>
+                    {% render_field formulario.valor class='form-control' %}
+                </div>
+
+                <!-- Pago -->
+                <div class="form-check mb-3">
+                    {% render_field formulario.pago class='form-check-input' %}
+                    <label class="form-check-label">✅ Pago</label>
+                </div>
+
+                <!-- Data -->
+                <div class="mb-3">
+                    <label class="form-label">📅 Data</label>
+                    {% render_field formulario.data class='form-control' %}
+                </div>
+
+                <!-- Botões -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'investimentos' %}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+
     </div>
+</div>
 {% endblock %}
